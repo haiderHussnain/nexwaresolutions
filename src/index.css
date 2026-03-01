@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 120 10% 97%;
+    --foreground: 160 25% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 160 25% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 160 25% 12%;
+
+    --primary: 165 65% 28%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 42 85% 52%;
+    --secondary-foreground: 160 25% 12%;
+
+    --muted: 120 8% 93%;
+    --muted-foreground: 160 10% 45%;
+
+    --accent: 42 85% 52%;
+    --accent-foreground: 160 25% 12%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 120 8% 88%;
+    --input: 120 8% 88%;
+    --ring: 165 65% 28%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 160 25% 12%;
+    --sidebar-foreground: 120 10% 90%;
+    --sidebar-primary: 42 85% 52%;
+    --sidebar-primary-foreground: 160 25% 12%;
+    --sidebar-accent: 160 20% 18%;
+    --sidebar-accent-foreground: 120 10% 90%;
+    --sidebar-border: 160 15% 20%;
+    --sidebar-ring: 42 85% 52%;
+
+    /* Custom tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(165 65% 28%), hsl(160 45% 20%));
+    --gold-gradient: linear-gradient(135deg, hsl(42 85% 52%), hsl(38 90% 60%));
+    --card-shadow: 0 4px 24px -4px hsl(165 65% 28% / 0.08);
+    --card-shadow-hover: 0 12px 32px -8px hsl(165 65% 28% / 0.15);
+    --footer-bg: 160 25% 10%;
+    --topbar-bg: 160 30% 14%;
+    --section-alt: 120 10% 95%;
+  }
+
+  .dark {
+    --background: 160 25% 8%;
+    --foreground: 120 10% 95%;
+    --card: 160 20% 12%;
+    --card-foreground: 120 10% 95%;
+    --popover: 160 20% 12%;
+    --popover-foreground: 120 10% 95%;
+    --primary: 165 65% 40%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 42 85% 52%;
+    --secondary-foreground: 160 25% 12%;
+    --muted: 160 15% 18%;
+    --muted-foreground: 120 8% 60%;
+    --accent: 42 85% 52%;
+    --accent-foreground: 160 25% 12%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 160 15% 20%;
+    --input: 160 15% 20%;
+    --ring: 165 65% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-16 md:py-20 lg:py-24 px-4;
+  }
+
+  .section-alt {
+    background-color: hsl(var(--section-alt));
+  }
+
+  .card-soft {
+    @apply bg-card rounded-2xl border border-border;
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .card-soft:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-4px);
+  }
+
+  .gradient-primary {
+    background: var(--hero-gradient);
+  }
+
+  .gradient-gold {
+    background: var(--gold-gradient);
+  }
+
+  .text-gradient {
+    background: var(--hero-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-gold {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .whatsapp-pulse {
+    animation: whatsapp-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes whatsapp-pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 hsl(142 70% 45% / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 12px hsl(142 70% 45% / 0);
+    }
+  }
+
+  .fade-up {
+    animation: fade-up 0.6s ease-out forwards;
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
